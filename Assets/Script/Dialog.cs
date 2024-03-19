@@ -64,11 +64,11 @@ public class Dialog : MonoBehaviour
         // 이미지 위치를 설정
         if (dialogue[count].isLeft)
         {
-            sprite_StandingCG.transform.localPosition = new Vector3(-469.6f, -259.6f, 0f); // 왼쪽에 표시
+            sprite_StandingCG.transform.localPosition = new Vector3(-451.6f, -249.6f, 0f); // 왼쪽에 표시
         }
         else
         {
-            sprite_StandingCG.transform.localPosition = new Vector3(-457.2f, -260f, 0f); // 오른쪽에 표시
+            sprite_StandingCG.transform.localPosition = new Vector3(-439.6f, -249.6f, 0f); // 오른쪽에 표시
         }
 
         count++; // 다음 대화로 이동
