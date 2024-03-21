@@ -19,43 +19,29 @@ public class Dialog : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite_DialogueBox; // 대화 상자를 표시하는 SpriteRenderer
     [SerializeField] private Text txt_Dialogue; // 대화 텍스트를 표시하는 Text 컴포넌트
 
+    [SerializeField] private Dialogue[] dialogue; // 대화 정보를 담고 있는 배열
+
     private bool isDialogue = false; // 대화 중인지 여부를 나타내는 플래그
     private int count = 0; // 현재 대화 인덱스를 저장하는 변수
-
-    [SerializeField] private Dialogue[] dialogue; // 대화 정보를 담고 있는 배열
 
     // 대화 시작 메서드
     public void ShowDialogue()
     {
-        ONOFF(true); // 대화 상자, 캐릭터 이미지, 대화 텍스트를 화면에 표시
+        OnOff(true); // 대화 상자, 캐릭터 이미지, 대화 텍스트를 화면에 표시
         count = 0; // 대화 인덱스 초기화
-        isDialogue = true; // 대화 중 플래그를 true로 설정
         NextDialogue(); // 첫 번째 대화로 이동
     }
 
-    // 대화 종료 메서드
-    public void HideDialogue()
-    {
-        ONOFF(false); // 대화 상자, 캐릭터 이미지, 대화 텍스트를 화면에서 숨김
-        isDialogue = false; // 대화 중 플래그를 false로 설정
-
-        // 모든 대화가 끝났을 때 Scene 전환
-        if (count >= dialogue.Length)
-        {
-            // 여기에서 다음 Scene의 이름을 지정해주세요.
-            string nextSceneName = "Game";
-            SceneManager.LoadScene(nextSceneName);
-        }
-    }
-
     // UI 요소를 활성화 또는 비활성화하는 메서드
-    private void ONOFF(bool _flag)
+    private void OnOff(bool _flag)
     {
         sprite_DialogueBox.gameObject.SetActive(_flag);
         sprite_StandingCG.gameObject.SetActive(_flag);
         txt_Dialogue.gameObject.SetActive(_flag);
+        isDialogue = _flag;
     }
 
+    // 다음 대화로 이동하는 메서드
     private void NextDialogue()
     {
         txt_Dialogue.text = dialogue[count].dialogue; // 대화 텍스트 업데이트
@@ -64,11 +50,11 @@ public class Dialog : MonoBehaviour
         // 이미지 위치를 설정
         if (dialogue[count].isLeft)
         {
-            sprite_StandingCG.transform.localPosition = new Vector3(-451.6f, -249.6f, 0f); // 왼쪽에 표시
+            sprite_StandingCG.transform.localPosition = new Vector2(-322f, 22f); // 왼쪽에 표시
         }
         else
         {
-            sprite_StandingCG.transform.localPosition = new Vector3(-439.6f, -249.6f, 0f); // 오른쪽에 표시
+            sprite_StandingCG.transform.localPosition = new Vector2(266f, 22f); // 오른쪽에 표시
         }
 
         count++; // 다음 대화로 이동
@@ -76,17 +62,21 @@ public class Dialog : MonoBehaviour
 
     void Update()
     {
+        // 대화 중일 때
         if (isDialogue)
         {
+            // 마우스 왼쪽 버튼을 클릭했을 때
             if (Input.GetMouseButtonDown(0))
             {
+                // 대화가 남아있을 경우
                 if (count < dialogue.Length)
                 {
                     NextDialogue(); // 다음 대화로 이동
                 }
+                // 대화가 끝났을 경우
                 else
                 {
-                    HideDialogue(); // 모든 대화가 끝나면 대화 종료
+                    OnOff(false); // 모든 대화가 끝나면 대화 종료
                 }
             }
         }
