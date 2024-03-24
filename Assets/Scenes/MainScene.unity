@@ -373,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 283186908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8de41d4ea2456d44181bddd0806256fc, type: 3}
+  m_Script: {fileID: 11500000, guid: c05b53cf036a9254f8e4ec7d93f5cd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &283186910
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 372850305}
   - component: {fileID: 372850304}
   m_Layer: 0
-  m_Name: "\uB3C4\uAEA0\uBE44\uCEA1\uCC981"
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 283186909}
-        m_TargetAssemblyTypeName: Change, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: SceneChange1
         m_Mode: 1
         m_Arguments:
@@ -873,7 +873,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 283186909}
-        m_TargetAssemblyTypeName: Change, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: GameExit
         m_Mode: 1
         m_Arguments:

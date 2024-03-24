@@ -83,6 +83,7 @@ public class Dialog : MonoBehaviour
                     else
                     {
                         OnOff(false); // 모든 대화가 끝나면 대화 종료
+                        SceneManager.LoadScene("BattleScene");
                     }
                 }
             }
